@@ -14,7 +14,6 @@ gem "slim-rails"
 gem 'dotenv-rails'
 gem 'redis', '~> 4.0'
 
-gem "jbuilder", "~> 2.11"
 gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "bootsnap", ">= 1.4.4", require: false
 
