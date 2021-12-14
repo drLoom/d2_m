@@ -11,6 +11,7 @@ gem "importmap-rails", ">= 0.9.2"
 gem "turbo-rails", ">= 0.9.0"
 gem "stimulus-rails", ">= 0.7.3"
 gem "slim-rails"
+gem 'dotenv-rails'
 
 gem "jbuilder", "~> 2.11"
 gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
