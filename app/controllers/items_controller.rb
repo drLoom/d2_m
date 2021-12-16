@@ -19,18 +19,16 @@ class ItemsController < ApplicationController
   def edit
   end
 
-  # POST /items
   def create
     @item = Item.new(item_params)
 
     if @item.save
-      redirect_to @item, notice: "Item was successfully created."
+      redirect_to items_url, notice: "Item was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
   end
 
-  # PATCH/PUT /items/1
   def update
     if @item.update(item_params)
       redirect_to @item, notice: "Item was successfully updated."
@@ -39,7 +37,6 @@ class ItemsController < ApplicationController
     end
   end
 
-  # DELETE /items/1
   def destroy
     @item.destroy
     redirect_to items_url, notice: "Item was successfully destroyed."
