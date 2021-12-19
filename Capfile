@@ -10,8 +10,7 @@ require "capistrano/scm/git"
 install_plugin Capistrano::SCM::Git
 
 require 'capistrano/puma'
-install_plugin Capistrano::Puma
-install_plugin Capistrano::Puma::Systemd
+# install_plugin Capistrano::Puma
 
 # Depending on your server, you may need a different plugin
 # For a Digital Ocean deploy, 'Daemon' will work
