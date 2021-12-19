@@ -1,0 +1,18 @@
+[Unit]
+Description=Puma HTTP Server for d2_m (production)
+After=network.target
+
+[Service]
+Type=simple
+User=loom
+WorkingDirectory=/home/loom/apps/d2_m/current
+ExecStart=/home/loom/.rvm/bin/rvm default do bundle exec puma -C /home/loom/apps/d2_m/shared/puma.rb
+ExecReload=/bin/kill -TSTP $MAINPID
+StandardOutput=append:/home/loom/apps/d2_m/current/log/puma.access.log
+StandardError=append:/home/loom/apps/d2_m/current/log/puma.error.log
+Restart=always
+RestartSec=1
+SyslogIdentifier=puma
+
+[Install]
+WantedBy=multi-user.target
