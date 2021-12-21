@@ -2,15 +2,41 @@
 Description=Puma HTTP Server
 After=network.target
 
-[Service]
-Type=simple
-User=loom
-WorkingDirectory=/home/loom/apps/d2_m/current
-Environment=RAILS_ENV=production
+# Uncomment for socket activation (see below)
+# Requires=puma.socket
 
-ExecStart=/home/loom/.rvm/wrappers/ruby-2.7.5/bundle -C /home/loom/apps/d2_m/current/config/puma/production.rb
+[Service]
+
+Type=simple
+
+
+
+# Preferably configure a non-privileged user
+User=loom
+
+
+WorkingDirectory=/home/${User}/apps/d2_m/current
+
+# Helpful for debugging socket activation, etc.
+# Environment=PUMA_DEBUG=1
+
+# SystemD will not run puma even if it is in your path. You must specify
+# an absolute URL to puma. For example /usr/local/bin/puma
+# Alternatively, create a binstub with `bundle binstubs puma --path ./sbin` in the WorkingDirectory
+ExecStart=${WorkingDirectory}/bin/puma -C ${WorkingDirectory}/config/puma.rb
+
+# Variant: Rails start.
+# ExecStart=/<FULLPATH>/bin/puma -C <YOUR_APP_PATH>/config/puma.rb ../config.ru
+
+# Variant: Use `bundle exec --keep-file-descriptors puma` instead of binstub
+# Variant: Specify directives inline.
+# ExecStart=/<FULLPATH>/puma -b tcp://0.0.0.0:9292 -b ssl://0.0.0.0:9293?key=key.pem&cert=cert.pem
+
+
 Restart=always
-KillMode=process
+#KillMode=process
 
 [Install]
 WantedBy=multi-user.target
+
+#ln -s /etc/systemd/system/puma.service ./puma_system_d
