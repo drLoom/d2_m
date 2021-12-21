@@ -23,7 +23,7 @@ WorkingDirectory=/home/loom/apps/d2_m/current
 # SystemD will not run puma even if it is in your path. You must specify
 # an absolute URL to puma. For example /usr/local/bin/puma
 # Alternatively, create a binstub with `bundle binstubs puma --path ./sbin` in the WorkingDirectory
-ExecStart=~/.rvm/bin/rvm default do bundle exec puma -C ./config/puma.rb ./config.ru
+ExecStart=/home/loom/.rvm/bin/rvm default do bundle exec puma -C ./config/puma.rb ./config.ru
 PIDFile=/home/loom/apps/d2_m/current/tmp/pids/puma.pid
 
 # Variant: Rails start.
@@ -51,3 +51,4 @@ WantedBy=multi-user.target
 
 # Check status
 #systemctl status puma_d2_m_production.service
+# sudo systemd-analyze verify puma_d2_m_production.service
