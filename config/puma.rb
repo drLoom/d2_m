@@ -12,10 +12,8 @@ threads min_threads_count, max_threads_count
 # terminating a worker in development environments.
 #
 app_dir = File.expand_path("../..", __FILE__)
-shared_dir = "#{app_dir}/shared"
-stdout_redirect "#{shared_dir}/log/puma.stdout.log", "#{shared_dir}/log/puma.stderr.log", true
 
-bind "unix://#{shared_dir}/tmp/sockets/d2_m-puma.sock"
+bind "unix:///home/loom/apps/d2_m/shared/tmp/sockets/d2_m-puma.sock"
 
 # Specifies the `environment` that Puma will run in.
 #
@@ -23,7 +21,7 @@ environment ENV.fetch("RAILS_ENV") { "production" }
 
 # Specifies the `pidfile` that Puma will use.
 pidfile ENV.fetch("PIDFILE") { "tmp/pids/server.pid" }
-state_path "#{shared_dir}/pids/puma.state"
+state_path "/home/loom/apps/d2_m/shared/tmp/pids/puma.state"
 
 # Specifies the number of `workers` to boot in clustered mode.
 # Workers are forked web server processes. If using threads and workers together
