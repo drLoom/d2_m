@@ -40,4 +40,4 @@ Restart=always
 [Install]
 WantedBy=multi-user.target
 
-#sudo cp ./puma_system_d /etc/systemd/system/puma.service
+#sudo cp ./puma_d2_m_production.service /etc/systemd/system/puma_d2_m_production.service
