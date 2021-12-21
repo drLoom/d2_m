@@ -41,3 +41,13 @@ Restart=always
 WantedBy=multi-user.target
 
 #sudo cp ./puma_d2_m_production.service /etc/systemd/system/puma_d2_m_production.service
+systemctl daemon-reload
+
+# Enable so it starts on boot
+# systemctl enable puma_d2_m_production.service
+
+# Initial startup.
+#systemctl start puma_d2_m_production.service
+
+# Check status
+#systemctl status puma_d2_m_production.service
