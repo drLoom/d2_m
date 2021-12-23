@@ -1,13 +1,6 @@
-<%# p#notice = notice
-
-p
-  strong Name:
-  = @item.name
-
-p
-  strong Desc:
-  = @item.desc
-
-=> link_to 'Edit', edit_item_path(@item)
-'|
-=< link_to 'Back', items_path %>
+<turbo-frame id="show_item">
+  <h1>
+    <%= @item.name %>
+  </h1>
+  <p><b>Description:</b> <%= @item.desc %></p>
+</turbo-frame>
