@@ -1,21 +1,17 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: %i[ show edit update destroy ]
 
-  # GET /items
   def index
     @items = Item.all
   end
 
-  # GET /items/1
   def show
   end
 
-  # GET /items/new
   def new
     @item = Item.new
   end
 
-  # GET /items/1/edit
   def edit
   end
 
@@ -43,12 +39,10 @@ class ItemsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_item
       @item = Item.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def item_params
       params.require(:item).permit(:name, :desc)
     end
