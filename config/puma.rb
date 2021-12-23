@@ -16,10 +16,11 @@ app_dir = File.expand_path("../..", __FILE__)
 
 # Specifies the `environment` that Puma will run in.
 #
-environment ENV.fetch("RAILS_ENV") { "production" }
+rails_env = ENV.fetch("RAILS_ENV") { "production" }
+environment rails_env
 
-if ENV.fetch("RAILS_ENV") == 'production'
-    bind "unix:///home/loom/apps/d2_m/shared/tmp/sockets/d2_m-puma.sock"
+if rails_env == 'production'
+  bind "unix:///home/loom/apps/d2_m/shared/tmp/sockets/d2_m-puma.sock"
 end
 
 # Specifies the `pidfile` that Puma will use.
